@@ -6,8 +6,8 @@ import SearchForm from './SearchForm';
 export default function Header() {
   return (
     <nav className="navbar">
-      <ul>
-        <li> <h1 className="">Rick &amp; Morty Fan Page</h1></li>
+       <h1 className="title">Rick &amp; Morty Fan Page</h1>
+       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/characters'>Characters</Link></li>
         <li><Link to='/locations'>Locations</Link></li>
