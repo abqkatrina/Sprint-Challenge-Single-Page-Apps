@@ -19,7 +19,7 @@ export default function LocationsList() {
           console.log('oh shit it\'s an error', error);
       }) // close .catch
 
-      const location = locations;
+      
     }, [locations]);
 
     
@@ -36,11 +36,9 @@ export default function LocationsList() {
             <ToastBody>
               <ul>
                 <li>Name: {location.name}</li>
-                <li>Status: {location.status}</li>
-                <li>Species: {location.species}</li>
-                <li>Gender: {location.gender}</li>
-                <li>Origin: {location.origin}</li>
-                <li>Type: {location.type}</li>
+                <li>Type: {location.Type}</li>
+                <li>Dimension: {location.Dimension}</li>
+                <li>Residents: {location.Residents}</li>
               </ul>
             </ToastBody>
   

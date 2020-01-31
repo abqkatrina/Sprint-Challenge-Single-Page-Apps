@@ -1,19 +1,11 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import CharacterCard from './CharacterCard';
-import { Link } from 'react-router-dom';
+import {Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 
-class CharacterList extends Component {
+export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
-  constructor(props) {
-    super(props);
-    this.state = {
-      characters: []
-    };
-  }
-
-
+  const [characters, setCharacters] = useState([]);
 
 
   useEffect(() => {
@@ -21,37 +13,56 @@ class CharacterList extends Component {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
     .post('https://rickandmortyapi.com/api/character/', characters)
+
     .then(response => {
         //console.log(response.data.results);
-        this.setState(() => ({characters:response.data.results}));
+        setCharacters(() => ({characters:response.data.results}));
     })
+
     .catch(error => {
         console.log('oh shit it\'s an error', error);
-    }), // close .catch
+    }) // close .catch
 
   }, [characters]);
 
 
-render() {
+
     return (
       <section className="character-list">
 
         {characters.map(character => (
-          <CharacterDetails key={character.id} character={character} />
+          <CharacterCard key={character.id} character={character} />
           ))}   
 
       </section>
     );
-  }
 }
 
-function CharacterDetails({ character }) {
+function CharacterCard( props ) {
   
   return (
-    <Link to={`/characters/${character.id}`}>
-      <CharacterCard character={character}/>
-    </Link>
+    <Toast>
+      <ToastHeader>
+        <img 
+            className='character-img'
+            src={props.image}
+            alt={props.name}
+        /> 
+      </ToastHeader>
+
+      <ToastBody>
+        <ul>
+          <li>Name: {props.name}</li>
+          <li>Status: {props.status}</li>
+          <li>Species: {props.species}</li>
+          <li>Gender: {props.gender}</li>
+          <li>Origin: {props.origin.name}</li>
+          <li>Type: {props.type}</li>
+        </ul>
+      </ToastBody>
+
+    </Toast> 
   );
 }
 
-export default CharacterList;
+
