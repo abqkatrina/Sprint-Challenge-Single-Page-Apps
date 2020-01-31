@@ -1,23 +1,23 @@
-import React from "react";
-import Header from "./components/Header.js";
-import CharacterList from './components/CharacterList';
-import LocationsList from './components/LocationsList';
-// import WelcomePage from './components/WelcomePage';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import Header from './components/Header.js';
+import SearchForm from './components/SearchForm';
+import CharacterCard from './components/CharacterCard';
+import LocationCard from './components/LocationCard';
+import WelcomePage from './components/WelcomePage';
+import { Route } from 'react-router-dom';
 
 
- function App() {
+ export default function App() {
 
 
   return (
-    <div className='body'>
+    <main className='main-container'>
       <Header/>
-      <Switch>
-      <Route exact path='/CharacterList' style={{border: '2px solid blue'}} component={CharacterList}/>
-      <Route exact path='/LocationsList' style={{border: '2px solid red'}} component={LocationsList} />
-      </Switch>
-    </div>
+      <Route exact path = '/search' component = {SearchForm} />
+      <Route exact path='/CharacterCard' style={{border: '2px solid blue'}} component={CharacterCard}/>
+      <Route exact path='/LocationCard' style={{border: '2px solid red'}} component={LocationCard} />
+      <Route exact path = '/' component = {WelcomePage} />
+    </main>
   );
 }
 
-export default App;

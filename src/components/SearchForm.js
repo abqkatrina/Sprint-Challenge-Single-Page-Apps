@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Formik } from 'formik';
 export default function SearchForm() {
  
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -22,12 +22,15 @@ export default function SearchForm() {
 
   return (
     <section className="search-form">
+      <Formik className='form'>
       <input
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={handleChange}
-      />
+      />  
+      </Formik>
+      <button type="submit">Search </button>
     </section>
   );
 }
