@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import {Toast, ToastBody, ToastHeader } from 'reactstrap';
+
 
 export default function LocationsList() {
     const [locations, setlocations] = useState([]);
@@ -15,7 +18,11 @@ export default function LocationsList() {
       .catch(error => {
           console.log('oh shit it\'s an error', error);
       }) // close .catch
+
+      const location = locations;
     }, [locations]);
+
+    
   
     return (
       <section className="location-list">
@@ -32,7 +39,7 @@ export default function LocationsList() {
                 <li>Status: {location.status}</li>
                 <li>Species: {location.species}</li>
                 <li>Gender: {location.gender}</li>
-                <li>Origin: {location.origin.name}</li>
+                <li>Origin: {location.origin}</li>
                 <li>Type: {location.type}</li>
               </ul>
             </ToastBody>
@@ -42,4 +49,5 @@ export default function LocationsList() {
   
       </section>
     );
+
 }

@@ -12,13 +12,13 @@ export default function SearchForm() {
 
   React.useEffect(() => {
       
-      const results = props.people.filter(person =>
+      const results = searchResults.filter(person =>
           person.toLowerCase().includes(searchTerm)
       );
 
       setSearchResults(results);
 
-  }, [searchTerm]);
+  }, [searchTerm,searchResults]);
 
   return (
     <section className="search-form">
