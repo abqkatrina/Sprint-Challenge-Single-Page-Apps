@@ -1,10 +1,32 @@
 import React from "react";
-import LocationsList from './LocationsList';
+import {Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 
-export default function LocationCard( props )  {
-  console.log(props)
+export default function LocationCard(props)  {
+  
+  
   return (
-  <LocationsList className= 'locationsBody'/>
+
+    <Toast>
+      <ToastHeader>
+        <img 
+            className='location-img'
+            src={props.image}
+            alt={props.name}
+        /> 
+      </ToastHeader>
+
+      <ToastBody>
+        <ul>
+          <li>Name: {props.name}</li>
+          <li>Status: {props.status}</li>
+          <li>Species: {props.species}</li>
+          <li>Gender: {props.gender}</li>
+          <li>Origin: {props.origin}</li>
+          <li>Type: {props.type}</li>
+        </ul>
+      </ToastBody>
+    </Toast> 
   );
 };
+     

@@ -1,23 +1,35 @@
 import React from 'react';
-import Header from './components/Header.js';
+import Header from './components/Header';
+import { Link, Router, Route } from 'react-router-dom';
+import CharacterList from './components/CharacterList';
+import LocationsList from './components/LocationsList';
 import SearchForm from './components/SearchForm';
-import CharacterCard from './components/CharacterCard';
-import LocationCard from './components/LocationCard';
-import WelcomePage from './components/WelcomePage';
-import { Route } from 'react-router-dom';
+import './index.css';
+
 
 
  export default function App() {
 
-
   return (
-    <main className='main-container'>
-      <Header/>
-      <Route exact path = '/search' component = {SearchForm} />
-      <Route exact path='/CharacterCard' style={{border: '2px solid blue'}} component={CharacterCard}/>
-      <Route exact path='/LocationCard' style={{border: '2px solid red'}} component={LocationCard} />
-      <Route exact path = '/' component = {WelcomePage} />
+    <main className="main-container">
+      
+      <nav className="navbar">
+        <h1 className="title">Rick &amp; Morty's Book of Faces</h1>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/characters'>Characters</Link></li>
+          <li><Link to='/locations'>Locations</Link></li>
+          <li><SearchForm/></li>
+        </ul>
+      </nav>
+
+      <Header />
+        
+          <Route exact path="/" component={App} />
+          <Route path="/characters" component={CharacterList} />
+          <Route path="/locations" component={LocationsList} />
+     
     </main>
-  );
+  )
 }
 

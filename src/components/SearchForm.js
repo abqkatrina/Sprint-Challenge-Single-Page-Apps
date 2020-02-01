@@ -1,36 +1,52 @@
-import React, { useState } from "react";
-import { Formik } from 'formik';
-export default function SearchForm() {
- 
-  const [searchTerm, setSearchTerm] = React.useState("");
-        
-  const [searchResults, setSearchResults] = useState([]);
-  
-  const handleChange = e => {
-      setSearchTerm(e.target.value)
-  }
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
-  React.useEffect(() => {
-      
-      const results = searchResults.filter(person =>
-          person.toLowerCase().includes(searchTerm)
-      );
+const SearchForm = () => {
 
-      setSearchResults(results);
+    const [data, setData] = useState([]);
+    const [query, setQuery] = useState("");
 
-  }, [searchTerm,searchResults]);
+  useEffect(() => {
+  // TODO: Add API Request here - must run in `useEffect`
+    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
+    axios
+      .get('https://rickandmortyapi.com/api/')
+      .then(response => {
+        console.log(response.data.results);
+        setData(response.data.results);
+        response.data.filter(item =>
+          item.name.toLowerCase().includes(query.toLowerCase()))
+      })
+      .catch(errors => {
+        console.log('The data was not returned', errors)
+      })
+  }, [query]);
+
+  const handleChanges = event => {
+    setQuery(event.target.value);
+  };  
+
+  const handleInputChanges = event => {
+    setQuery(event.target.value);
+  };
+  console.log(data);
+
 
   return (
     <section className="search-form">
-      <Formik className='form'>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleChange}
-      />  
-      </Formik>
-      <button type="submit">Search </button>
+      <form className='form'>
+
+          <input
+            type="text"
+            placeholder="Search"
+            value={query}
+            onChange={handleInputChanges}
+          />  
+
+          <button type="submit" onSubmit={handleChanges}>Search</button>
+          
+      </form>
     </section>
   );
 }
+export default SearchForm;
