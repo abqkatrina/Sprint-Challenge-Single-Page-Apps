@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Form } from 'react';
 import axios from 'axios';
-import SearchForm from './SearchForm';
+// import SearchForm from './SearchForm';
 import CharacterCard from './CharacterCard';
 
 
@@ -17,9 +17,9 @@ const [characters, setCharacter] = useState([]);
   // change state
           .then(response => setCharacter(response.data.results))
           .catch(error => console.log('AIDS!', error))
-  },[]);
+  }, []);
 
-  console.log( "characters", characters);
+  console.log( 'characters', characters);
   // const handleChange = event => {
   //   setCharacter({ value: event.target.value })
   // }
@@ -32,13 +32,13 @@ const [characters, setCharacter] = useState([]);
           <button type='submit'>Search</button>
         </Form>  */
       
-        <div className="character-list grid-view">
+        <div className='character-list grid-view'>
           {characters.map((character) => (
-            <CharacterCard key={character.id} character={character} />
+            <CharacterCard key={character.id} character={character}/>
           ))}
         </div>
 
     // </div>
  
-  )
+  );
 }

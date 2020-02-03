@@ -4,7 +4,7 @@ import React from 'react';
 export default function EpisodeCard(props) {
     return (
         <Toast className='card'>
-            <ToastHeader class='toast-header'>
+            <ToastHeader className='toast-header'>
                 <p>Name: {props.episode.name}</p>
             </ToastHeader>
             <ToastBody>

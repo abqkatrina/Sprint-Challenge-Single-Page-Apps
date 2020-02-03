@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Form} from 'react';
 import axios from 'axios';
-import SearchForm from './SearchForm';
+// import SearchForm from './SearchForm';
 import LocationCard from  './LocationCard';
 
 
@@ -21,7 +21,7 @@ const [locations, setLocation] = useState([]);
 
     // const handleChange = event => {
     //   setLocation({ value: event.target.value });
-  console.log("locations", locations)  // }
+  console.log('locations', locations)  // }
   
       return (
         // <div className='container'>
@@ -47,7 +47,7 @@ const [locations, setLocation] = useState([]);
   
 // const CardGrid = ({ character }) => {
 //     return (
-//       <div className="grid">
+//       <div className='grid'>
 //           {character.map((character, index) => {
 //             return <Card key={index} character={character} />;
 //           })}

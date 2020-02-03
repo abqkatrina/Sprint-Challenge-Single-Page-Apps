@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Form} from 'react';
 import axios from 'axios';
-import SearchForm from './SearchForm';
+// import SearchForm from './SearchForm';
 import EpisodeCard from  './EpisodeCard';
 
 
@@ -19,7 +19,7 @@ export default function EpisodeList() {
            .catch(error => console.log('GRASSSSS... tastes bad!', error))
     }, []);
 
-    console.log( "episodes", episodes);
+    console.log( 'episodes', episodes);
   // const handleChange = event => {
   //   setEpisode({ value: event.target.value })
   // }
@@ -29,14 +29,8 @@ export default function EpisodeList() {
       // <div className='container'>
 
         /* <Form>
-          <input
-            type="text" 
-            placeholder='Search Episodes'
-            value={query}
-            data={episodes}
-          />
-
-            <button onSubmit={handleChange}>Search</button>
+        <SearchForm />
+       <button type='submit'}>Search</button>
           
           </Form>
            */
@@ -44,7 +38,7 @@ export default function EpisodeList() {
           <div className='episode-list grid-view'>
               {episodes.map((episode) => (      
                 <EpisodeCard key={episode.id} episode={episode}/>
-              ))}          
+              ))}           
           </div>
       // </div>
   );
