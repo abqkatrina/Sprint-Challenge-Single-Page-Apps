@@ -1,31 +1,19 @@
-import React from "react";
-import {Toast, ToastBody, ToastHeader } from 'reactstrap';
+import { Toast, ToastHeader, ToastBody } from 'reactstrap';
+import React from 'react';
 
-
-export default function CharacterCard(props)  {
-  
-  return (
-
-    <Toast>
-    <ToastHeader>
-      <img 
-          className='character-img'
-          src={props.image}
-          alt={props.name}
-      /> 
-    </ToastHeader>
-
-    <ToastBody>
-      <ul>
-        <li>Name: {props.name}</li>
-        <li>Status: {props.status}</li>
-        <li>Species: {props.species}</li>
-        <li>Gender: {props.gender}</li>
-        <li>Origin: {props.origin}</li>
-        <li>Type: {props.type}</li>
-      </ul>
-    </ToastBody>
-</Toast> 
-  );
-};
-     
+export default function CharacterCard(item)  {
+    return(
+        <Toast className='card'>
+            <ToastHeader class='toast-header'>
+                <p>Name: {item.name}</p>
+            </ToastHeader>
+            <ToastBody>
+                <p>Name: {item.name}</p>
+                <p>Status: {item.status}</p>
+                <p>Species: {item.species}</p>
+                <p>Gender: {item.gender}</p>
+                <p>Origin: {item.origin.name}</p>
+            </ToastBody>
+        </Toast>
+    )
+  };

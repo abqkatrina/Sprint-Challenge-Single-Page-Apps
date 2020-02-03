@@ -1,37 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, Form } from 'react';
 import axios from 'axios';
-import CharacterCard from './CharacterCard'
+import CharacterCard from './CharacterCard';
+import Header from './Header';
 
-const CharacterList = () => {
 
-  // TODO: Add useState to track data from useEffect
-  const [characters, setCharacters] = useState([]);
+export default function CharacterList() {
 
-  // useEffect(() => {
-  // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    axios
-      .get('https://rickandmortyapi.com/api/character/')
-      .then(response => {
-        console.log('get characters', response.data.results);
-        setCharacters(response.data.results);
-      })
-      .catch(errors => {
-        console.log("And that's the wayyyyyy the news goes!", errors)
-      })
-  // }, [characters, setCharacters]);
-    
-  console.log(characters);
-  
+const [characters, setCharacter] = useState([]);
+// const [query, setQuery] = useState('');
+
+  useEffect(() => {
+  //get array of characters
+    axios.get('https://rickandmortyapi.com/api/characters/')
+
+  // .then(response => console.log(response))
+  // change state
+          .then(response => setCharacter(response.data.results))
+          .catch(error => console.log('AIDS!', error))
+  },[]);
+
+   
+  const handleChange = event => {
+    setCharacter({ character: event.target.value })
+  }
+
   return (
-    <section className="character-list">
-     
+    <div className='characterBody'>
+      <Header />
       <div>
-        {characters.map(character => (
-          <CharacterCard key={character.id} character={character} />
-        ))}
-      </div>
-    </section>
-  );
+      <Form>
+        <input
+          type="text" 
+          placeholder='Search characters'
+          onChange={handleChange}
+          />
+        <button onSubmit={handleChange}>Search</button>
+        </Form>
+      
+      <section className="character-list grid-view">
+    
+          {characters.map(character => (
+            <CharacterCard key={character.id} character={character} />
+          ))}
+      </section>
+    </div>
+    </div>
+  )
 }
-export default CharacterList;
