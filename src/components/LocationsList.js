@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Form} from 'react';
 import axios from 'axios';
+import SearchForm from './SearchForm';
 import LocationCard from  './LocationCard';
 
 
@@ -20,27 +21,23 @@ const [locations, setLocation] = useState([]);
 
     // const handleChange = event => {
     //   setLocation({ value: event.target.value });
-    // }
-
-      return (
-        <div className='container'>
+  console.log("locations", locations)  // }
   
-          {/* <Form>
-            <input
-              type="text"
-              placeholder='Search Locations'
-              value= {query}
-              data= {locations}
-            />
-            <button onSubmit={handleChange}>Search</button>
-          </Form> */}
-          <section className='location-list grid-view'>
-             {locations.map((location,index) => {  
+      return (
+        // <div className='container'>
+        //   <div id='search'>
+        //   <Form>
+        //     <SearchForm />
+        //     <button tpe='submit'>Search</button>
+        //   </Form>
+        //   </div>
+          <div className='location-list grid-view'>
+             {locations.map((location) => {  
                return(   
-               <LocationCard key={index} location={location}/>
+               <LocationCard key={location.id} location={location}/>
              )})}
-        </section>
-      </div>
+        </div>
+      // </div>
       
     )
   }

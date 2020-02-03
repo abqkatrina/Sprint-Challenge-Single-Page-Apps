@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Form } from 'react';
 import axios from 'axios';
+import SearchForm from './SearchForm';
 import CharacterCard from './CharacterCard';
 
 
@@ -27,21 +28,17 @@ const [characters, setCharacter] = useState([]);
     // <div className='container'>    
       
         /* <Form>
-          <input
-            type="text" 
-            placeholder='Search characters'
-            value= {query}
-            data= {characters}
-            />
-          <button onSubmit={handleChange}>Search</button>
-        </Form> */
+          <SearchForm/>
+          <button type='submit'>Search</button>
+        </Form>  */
       
         <div className="character-list grid-view">
           {characters.map((character) => (
-            <CharacterCard key={character.id} characters={characters} />
+            <CharacterCard key={character.id} character={character} />
           ))}
         </div>
-      /* </div> */
+
+    // </div>
  
   )
 }

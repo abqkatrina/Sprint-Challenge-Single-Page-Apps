@@ -1,29 +1,31 @@
+import React, { useState, Form } from "react";
 
-function SearchResults() {
-    const [data, setData] = useState({ hits: [] });
-    const [query, setQuery] = useState('');
-  
-    useEffect(() => {
-      const fetchData = () => {
-        axios
-          .get('/characters?' + query)
-          .then(res => setData(res.data));
-      };
-  
-      fetchData();
-    }, [query]);
-  
-    return (
-      <>
-        <input value={query} onChange={e => setQuery(e.target.value)} />
-        <section className='grid-list'>
-          {data.hits.map((item, index) => {
-            return(
-              <CharacterCard />
-              <LocationCard />
-              <EpisodeCard />
-            )})}
-      </section>
-      </>
-    );
+
+export default function SearchForm({ data, handleSearch }) {
+  const [search, setSearch] = useState('')
+
+  const handleChanges = event => {
+    setSearch(event.target.value)
   }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    const newData = data.filter(x => (
+      x.name.toLowerCase().includes(search.toLowerCase())
+    ))
+    handleSearch(newData)
+  }
+  return (
+    <section className="search-form">
+      <Form>
+        <label>
+          Search
+          <form onSubmit={handleSubmit}>
+            <input onChange={handleChanges} value={search} type="text" placeholder="Search Here" />
+            <input type="submit" />
+          </form>
+        </label>
+      </Form>
+    </section>
+  );
+}

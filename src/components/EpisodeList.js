@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Form} from 'react';
 import axios from 'axios';
+import SearchForm from './SearchForm';
 import EpisodeCard from  './EpisodeCard';
 
 
@@ -7,7 +8,6 @@ export default function EpisodeList() {
 
   const [episodes, setEpisode] = useState([]);
   // const [query, setQuery] = useState('');
-
 
   useEffect(() => {
    //get array of episodes
