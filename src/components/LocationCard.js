@@ -5,11 +5,11 @@ import React from 'react';
      return(    
         <Toast className='card'>
             <ToastHeader class='toast-header'>
-                <p>Name: {props.name}</p>
+                <p>Name: {props.location.name}</p>
             </ToastHeader>
             <ToastBody>
-                <p>Type: {props.type}</p>
-                <p>Dimension: {props.dimension}</p>
+                <p>Type: {props.location.type}</p>
+                <p>Dimension: {props.location.dimension}</p>
             </ToastBody>
         </Toast>
     )

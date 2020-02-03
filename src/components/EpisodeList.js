@@ -16,7 +16,7 @@ export default function EpisodeList() {
   //  .then(response => console.log(response))
    // change state
            .then(response => setEpisode(response.data.results))
-           .catch(error => console.log('AIDS!', error))
+           .catch(error => console.log('GRASSSSS... tastes bad!', error))
     }, []);
 
     console.log( "episodes", episodes);
@@ -43,7 +43,7 @@ export default function EpisodeList() {
 
           <div className='episode-list grid-view'>
               {episodes.map((episode) => (      
-                <EpisodeCard key={episode.id} episodes={episodes}/>
+                <EpisodeCard key={episode.id} episode={episode}/>
               ))}          
           </div>
       // </div>

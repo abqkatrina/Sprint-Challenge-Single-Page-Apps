@@ -5,11 +5,11 @@ export default function EpisodeCard(props) {
     return (
         <Toast className='card'>
             <ToastHeader class='toast-header'>
-                <p>Name: {props.name}</p>
+                <p>Name: {props.episode.name}</p>
             </ToastHeader>
             <ToastBody>
-                <p>Air Date: {props.air_date}</p>
-                <p>Episode: {props.episode}</p>
+                <p>Air Date: {props.episode.air_date}</p>
+                <p>Episode: {props.episode.episode}</p>
             </ToastBody>
         </Toast>
     )
