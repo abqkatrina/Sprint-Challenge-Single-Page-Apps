@@ -1,58 +1,52 @@
 import React, { useState, useEffect, Form} from 'react';
 import axios from 'axios';
 import EpisodeCard from  './EpisodeCard';
-import Header from './Header';
 
 
 export default function EpisodeList() {
 
   const [episodes, setEpisode] = useState([]);
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
 
 
   useEffect(() => {
    //get array of episodes
-      axios.get('https://rickandmortyapi.com/api/episodes/')
+      axios.get('https://rickandmortyapi.com/api/episode/')
 
-   // .then(response => console.log(response))
+  //  .then(response => console.log(response))
    // change state
            .then(response => setEpisode(response.data.results))
-           .catch(errors => console.log('AIDS!', errors))
+           .catch(error => console.log('AIDS!', error))
     }, []);
 
-  const handleChange = event => {
-    setEpisode({ episode: event.target.value })
-  }
+    console.log( "episodes", episodes);
+  // const handleChange = event => {
+  //   setEpisode({ value: event.target.value })
+  // }
 
 
     return (
-      <div className='episodeBody'>
+      // <div className='container'>
 
-      <Header />
-
-      <div>
-        <Form>
+        /* <Form>
           <input
             type="text" 
             placeholder='Search Episodes'
             value={query}
-            data={episodes}/>
+            data={episodes}
+          />
 
             <button onSubmit={handleChange}>Search</button>
           
           </Form>
-          
-          <section className='episode-list grid-view'>
-          
-            <div>
+           */
+
+          <div className='episode-list grid-view'>
               {episodes.map((episode) => (      
-                <EpisodeCard key={episode.id} episode={episode}/>
-              ))}
-            </div>
-          
-          </section>
-      </div>
-    </div>
+                <EpisodeCard key={episode.id} episodes={episodes}/>
+              ))}          
+          </div>
+      // </div>
   );
 }
    
