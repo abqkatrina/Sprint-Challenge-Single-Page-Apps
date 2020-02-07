@@ -14,4 +14,5 @@ export default function EpisodeCard(props) {
             </ToastBody>
         </Toast>
     )
+    
 }

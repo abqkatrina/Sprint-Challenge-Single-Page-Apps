@@ -30,6 +30,7 @@ main {
   margin: 20px 30%;
   height: 25px;
   display: flex;
+  justify-content: center;
 }
 
 .searchBox {

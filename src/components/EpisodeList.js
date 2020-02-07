@@ -52,4 +52,5 @@ const EpisodeList = () => {
     </div>
   )
 }
+
 export default EpisodeList;

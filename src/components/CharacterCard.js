@@ -17,4 +17,4 @@ export default function CharacterCard(props)  {
             </ToastBody>
         </Toast>
     )
-  }
+}

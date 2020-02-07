@@ -57,4 +57,5 @@ const handleInputChange = event => {
     )
   
 }
+
 export default LocationsList;

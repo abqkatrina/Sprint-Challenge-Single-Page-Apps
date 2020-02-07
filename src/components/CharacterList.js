@@ -53,4 +53,5 @@ const [query, setQuery] = useState('');
   );
 }
 
+
 export default CharacterList;
