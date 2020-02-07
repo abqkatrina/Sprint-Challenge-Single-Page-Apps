@@ -1,16 +1,16 @@
-  
+
 import { Toast, ToastHeader, ToastBody } from 'reactstrap';
 import React from 'react';
- 
- export default function LocationCard(props) {
-     return(    
+
+export default function EpisodeCard(props) {
+    return (
         <Toast className='card'>
             <ToastHeader className='toast-header'>
-                <p>Name: {props.location.name}</p>
+                <p>Name: {props.episode.name}</p>
             </ToastHeader>
             <ToastBody>
-                <p>Type: {props.location.type}</p>
-                <p>Dimension: {props.location.dimension}</p>
+                <p>Air Date: {props.episode.air_date}</p>
+                <p>Episode: {props.episode.episode}</p>
             </ToastBody>
         </Toast>
     )
